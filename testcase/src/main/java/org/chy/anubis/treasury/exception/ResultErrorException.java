@@ -1,4 +1,4 @@
-package org.chy.anubis.treasury.testcase.exception;
+package org.chy.anubis.treasury.exception;
 
 public class ResultErrorException extends RuntimeException {
 

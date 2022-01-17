@@ -1,4 +1,4 @@
-package org.chy.anubis.treasury.testcase;
+package org.chy.anubis.treasury;
 
 public interface Exector<T> {
 

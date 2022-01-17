@@ -1,10 +1,11 @@
 package org.chy.anubis.treasury.testcase.leetcode.two_sum.case01;
 
-import org.chy.anubis.treasury.testcase.Exector;
+import org.chy.anubis.treasury.Exector;
 import org.chy.anubis.treasury.testcase.leetcode.two_sum.Algorithm;
-import org.chy.anubis.treasury.testcase.utils.ArrayUtils;
+import org.chy.anubis.treasury.utils.ArrayUtils;
+import org.chy.anubis.treasury.utils.AssertUtils;
 
-public class CaseO1TestCase implements Exector<Algorithm> {
+public class TestCase implements Exector<Algorithm> {
 
     @Override
     public void run(Algorithm algorithm) {
@@ -12,7 +13,6 @@ public class CaseO1TestCase implements Exector<Algorithm> {
 
         int[] result = algorithm.twoSum(nums, 9);
 
-        ArrayUtils.compare(result, new int[]{0, 1});
-
+        AssertUtils.assertArray(result, new int[]{0, 1});
     }
 }

@@ -1,4 +1,4 @@
-package org.chy.anubis.treasury.testcase.utils;
+package org.chy.anubis.treasury.utils;
 
 public class ArrayUtils {
 

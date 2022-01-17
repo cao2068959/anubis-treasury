@@ -1,10 +1,10 @@
-package org.chy.anubis.treasury.testcase.utils;
+package org.chy.anubis.treasury.utils;
 
-import org.chy.anubis.treasury.testcase.exception.ResultErrorException;
+import org.chy.anubis.treasury.exception.ResultErrorException;
 
 public class AssertUtils {
 
-    public void assertArray(int[] current, int[] target) {
+    public static void assertArray(int[] current, int[] target) {
         if (!ArrayUtils.compare(current, target)) {
             throw new ResultErrorException(ArrayUtils.toString(current), ArrayUtils.toString(target));
         }

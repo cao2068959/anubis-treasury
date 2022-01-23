@@ -64,7 +64,7 @@ public class ArrayUtils {
 
         for (int currentItem : current) {
             for (int targetItem : target) {
-                if (!targetItem.equals(currentItem)) {
+                if (currentItem != targetItem) {
                     return false;
                 }
             }
@@ -80,12 +80,12 @@ public class ArrayUtils {
         StringBuilder result = new StringBuilder("{");
         boolean one = true;
         for (int data : arry) {
-            if (!one){
+            if (!one) {
                 result.append(",");
-            }else {
+            } else {
                 one = false;
             }
-            result.append(" ").append(i);
+            result.append(" ").append(data);
         }
         result.append("}");
         return result.toString();

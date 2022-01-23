@@ -1,6 +1,9 @@
 package org.chy.anubis.treasury.web.controller;
 
+import org.chy.anubis.treasury.web.entity.FileBlobDescribeInfo;
 import org.chy.anubis.treasury.web.entity.FileDescribeInfo;
+import org.chy.anubis.treasury.web.entity.JsonResult;
+import org.chy.anubis.treasury.web.exception.FileWarehouseException;
 import org.chy.anubis.treasury.web.property.FileWarehouseProperty;
 import org.chy.anubis.treasury.web.service.FileWarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +22,29 @@ public class FileWarehouseController {
     FileWarehouseService service;
 
     /**
-     * 获取对应路径下面的所有 文件/文件夹 名称
+     * 获取对应路径下面的所有 文件/文件夹 列表
+     *
      * @param path
      * @return
      */
     @GetMapping("filelist")
-    public List<FileDescribeInfo> findFilePath(String path){
-        return service.findFilePath(path);
+    public JsonResult findFileList(String path) {
+        return JsonResult.success(service.findFileList(path));
     }
 
+    /**
+     * 获取对应路径下面的所有 文件/文件夹, 如果是文件,那么还会取出对应的内容
+     *
+     * @param path
+     * @return
+     */
+    @GetMapping("/content/list")
+    public JsonResult findFileContents(String path) {
+        try {
+            return JsonResult.success(service.findFileContents(path));
+        } catch (FileWarehouseException fileWarehouseException) {
+            return JsonResult.fail(fileWarehouseException.getMsg());
+        }
+    }
 
 }

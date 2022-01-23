@@ -1,6 +1,5 @@
 package org.chy.anubis.treasury.web.property;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,7 +29,9 @@ public class FileWarehouseProperty {
         if (suffixIndex == -1){
             throw new RuntimeException("路径: [" + resource + "] 不能找到 FileWarehouse path, 请指定配置 [ anubis.filewarehouse.path ]");
         }
-        this.path = projectPath.substring(0, suffixIndex);
+        this.path = projectPath.substring(0, suffixIndex) + "/testcase";
     }
+
+
 
 }

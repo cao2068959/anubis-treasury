@@ -98,7 +98,7 @@ public class AnubisFileWarehouseContext {
         }
 
         if (endIndex - startIndex < path.length() - 1) {
-            path = path.substring(startIndex, endIndex);
+            path = path.substring(startIndex, endIndex + 1);
         }
         return path;
     }

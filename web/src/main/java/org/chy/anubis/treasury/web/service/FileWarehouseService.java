@@ -35,4 +35,9 @@ public class FileWarehouseService {
                 .map(fileDescribeInfo -> warehouseContext.fetchFileContent(fileDescribeInfo.getUrl()))
                 .collect(Collectors.toList());
     }
+
+
+    public FileBlobDescribeInfo findFileContent(String path) {
+        return warehouseContext.fetchFileContent(path);
+    }
 }

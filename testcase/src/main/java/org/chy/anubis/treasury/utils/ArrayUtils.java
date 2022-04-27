@@ -81,11 +81,11 @@ public class ArrayUtils {
         boolean one = true;
         for (int data : arry) {
             if (!one) {
-                result.append(",");
+                result.append(" , ");
             } else {
                 one = false;
             }
-            result.append(" ").append(data);
+            result.append(data);
         }
         result.append("}");
         return result.toString();

@@ -62,11 +62,11 @@ public class ArrayUtils {
             return false;
         }
 
-        for (int currentItem : current) {
-            for (int targetItem : target) {
-                if (currentItem != targetItem) {
-                    return false;
-                }
+        for (int i = 0; i < current.length; i++) {
+            int currentItem = current[i];
+            int targetItem = target[i];
+            if (currentItem != targetItem) {
+                return false;
             }
         }
         return true;

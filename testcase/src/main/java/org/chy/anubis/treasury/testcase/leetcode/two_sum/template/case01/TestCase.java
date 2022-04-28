@@ -16,6 +16,6 @@ public class TestCase implements Exector<Algorithm> {
         Logger.info("[两数之和] 最终目标数为: ["+target+"]");
         int[] result = algorithm.twoSum(nums, 9);
 
-        AssertUtils.assertArray(result, new int[]{0, 1});
+        AssertUtils.assertArray(result, new int[]{0, 1}, false);
     }
 }

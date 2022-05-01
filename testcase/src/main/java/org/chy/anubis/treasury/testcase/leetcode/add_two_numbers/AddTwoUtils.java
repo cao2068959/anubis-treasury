@@ -9,6 +9,7 @@ public class AddTwoUtils {
      * 自动把数字转成链表后, 放入算法中运行, 最后判断结果
      */
     public static void addTwo(int num1, int num2, Algorithm algorithm) {
+
         ListNode num1List = numToList(num1);
         ListNode num2List = numToList(num2);
 
@@ -18,10 +19,10 @@ public class AddTwoUtils {
         int intResult = num1 + num2;
         ListNode resultList = numToList(intResult);
 
-        if (resultList.equals(listNode)) {
+        if (!resultList.equals(listNode)) {
             Logger.error("预期结果应该是: " + resultList + " 而当前计算结果为: " + listNode);
-            return;
         }
+        Logger.info("\n");
     }
 
     /**

@@ -24,6 +24,28 @@ public class AssertUtils {
         }
     }
 
+    public static void assertInt(int current, int expect) {
+        if (current != expect){
+            Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
+                    true);
+        }
+    }
+
+
+    public static void assertString(String current, String expect) {
+        if (!current.equals(expect)){
+            Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
+                    true);
+        }
+    }
+
+    public static void assertDouble(double current, double expect) {
+        if (current != expect){
+            Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
+                    true);
+        }
+    }
+
     private static String resultToString(String currentResult, String expectResult) {
         return "预期结果为: " + expectResult + " 而当前结果为: " + currentResult;
     }

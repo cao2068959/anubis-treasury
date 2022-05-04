@@ -20,7 +20,7 @@ public class AddTwoUtils {
         ListNode resultList = numToList(intResult);
 
         if (!resultList.equals(listNode)) {
-            Logger.error("预期结果应该是: " + resultList + " 而当前计算结果为: " + listNode);
+            Logger.error("预期结果应该是: " + resultList + " 而当前计算结果为: " + listNode,true);
         }
         Logger.info("\n");
     }

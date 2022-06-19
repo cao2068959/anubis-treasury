@@ -25,7 +25,7 @@ public class AssertUtils {
     }
 
     public static void assertInt(int current, int expect) {
-        if (current != expect){
+        if (current != expect) {
             Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
                     true);
         }
@@ -33,14 +33,21 @@ public class AssertUtils {
 
 
     public static void assertString(String current, String expect) {
-        if (!current.equals(expect)){
+        if (!current.equals(expect)) {
+            Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
+                    true);
+        }
+    }
+
+    public static void assertBoolean(Boolean current, Boolean expect) {
+        if (!current.equals(expect)) {
             Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
                     true);
         }
     }
 
     public static void assertDouble(double current, double expect) {
-        if (current != expect){
+        if (current != expect) {
             Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
                     true);
         }

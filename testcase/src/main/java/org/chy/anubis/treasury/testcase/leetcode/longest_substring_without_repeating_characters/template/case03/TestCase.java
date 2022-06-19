@@ -10,11 +10,9 @@ public class TestCase implements Exector<Algorithm> {
 
     @Override
     public void run(Algorithm algorithm) {
-
         String data = "pwwkew";
         Logger.info("测试字符串为: [" + data + "]");
         int result = algorithm.lengthOfLongestSubstring(data);
         AssertUtils.assertInt(result, 3);
-
     }
 }

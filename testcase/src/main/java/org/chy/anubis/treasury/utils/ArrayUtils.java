@@ -1,5 +1,7 @@
 package org.chy.anubis.treasury.utils;
 
+import java.util.function.Function;
+
 public class ArrayUtils {
 
     /**
@@ -86,6 +88,26 @@ public class ArrayUtils {
                 one = false;
             }
             result.append(data);
+        }
+        result.append("}");
+        return result.toString();
+    }
+
+    public static <T> String toString(T[] arry, Function<T, String> convert) {
+        if (arry == null || arry.length == 0) {
+            return "{}";
+        }
+
+        StringBuilder result = new StringBuilder("{");
+        boolean one = true;
+        for (T data : arry) {
+            if (!one) {
+                result.append(" , ");
+            } else {
+                one = false;
+            }
+            String v = convert.apply(data);
+            result.append(v);
         }
         result.append("}");
         return result.toString();

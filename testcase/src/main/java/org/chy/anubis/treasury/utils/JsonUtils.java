@@ -8,6 +8,9 @@ public class JsonUtils {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static String toJson(Object o) {
+        if (o instanceof  String){
+            return (String) o;
+        }
         try {
             return objectMapper.writeValueAsString(o);
         } catch (JsonProcessingException e) {

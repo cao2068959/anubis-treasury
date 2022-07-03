@@ -2,6 +2,7 @@ package org.chy.anubis.treasury.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.chy.anubis.treasury.log.Logger;
+import org.chy.anubis.treasury.testcase.dto.ListNode;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -78,5 +79,16 @@ public class AssertUtils {
         List<String> collect = stringStream.collect(Collectors.toList());
         String result = StringUtils.join("[", "]", collect, s -> s);
         assertString(result, expectResult);
+    }
+
+    public static void assertListNode(ListNode currentResult, ListNode expectResult) {
+        if (currentResult == null && expectResult == null) {
+            return;
+        }
+        if (currentResult == null || !currentResult.equals(expectResult)) {
+            String cs = currentResult == null ? "[]" : String.valueOf(currentResult);
+            String es = expectResult == null ? "[]" : String.valueOf(expectResult);
+            Logger.error(resultToString(cs, es), true);
+        }
     }
 }

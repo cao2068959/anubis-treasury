@@ -25,8 +25,30 @@ public class AssertUtils {
             Arrays.sort(current);
             Arrays.sort(target);
         }
-        if (!ArrayUtils.compare(current, target)) {
+
+        int len = current == null ? -1 : current.length;
+        if (!ArrayUtils.compare(current, len, target)) {
             Logger.error(resultToString(ArrayUtils.toString(current), ArrayUtils.toString(target)),
+                    true);
+        }
+    }
+
+
+    /**
+     * 对比指定长度的两个数组
+     *
+     * @param current    要对比的数据
+     * @param len        对比的长度
+     * @param target     参照对象
+     * @param judgeOrder 是否需要 判断位置都一致
+     */
+    public static void assertArray(int[] current, int len, int[] target, boolean judgeOrder) {
+        if (!judgeOrder && current != null && target != null) {
+            Arrays.sort(current);
+            Arrays.sort(target);
+        }
+        if (!ArrayUtils.compare(current, len, target)) {
+            Logger.error(resultToString(ArrayUtils.toString(current, len), ArrayUtils.toString(target, len)),
                     true);
         }
     }

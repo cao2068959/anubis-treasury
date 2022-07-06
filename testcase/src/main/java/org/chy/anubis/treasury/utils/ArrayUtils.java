@@ -44,10 +44,9 @@ public class ArrayUtils {
      *
      * @param current
      * @param target
-     * @param <T>
      * @return
      */
-    public static boolean compare(int[] current, int[] target) {
+    public static boolean compare(int[] current, int len, int[] target) {
         if (current == target) {
             return true;
         }
@@ -60,11 +59,11 @@ public class ArrayUtils {
             return true;
         }
 
-        if (current.length != target.length) {
+        if (len != target.length) {
             return false;
         }
 
-        for (int i = 0; i < current.length; i++) {
+        for (int i = 0; i < len; i++) {
             int currentItem = current[i];
             int targetItem = target[i];
             if (currentItem != targetItem) {
@@ -75,6 +74,10 @@ public class ArrayUtils {
     }
 
     public static String toString(int[] arry) {
+        return toString(arry, arry == null ? -1 : arry.length);
+    }
+
+    public static String toString(int[] arry, int len) {
         if (arry == null || arry.length == 0) {
             return "{}";
         }
@@ -82,18 +85,27 @@ public class ArrayUtils {
         StringBuilder result = new StringBuilder("{");
         boolean one = true;
         for (int data : arry) {
+            if (len <= 0) {
+                break;
+            }
             if (!one) {
                 result.append(" , ");
             } else {
                 one = false;
             }
             result.append(data);
+            len--;
         }
         result.append("}");
         return result.toString();
     }
 
+
     public static <T> String toString(T[] arry, Function<T, String> convert) {
+        return toString(arry, arry == null ? -1 : arry.length, convert);
+    }
+
+    public static <T> String toString(T[] arry, int len, Function<T, String> convert) {
         if (arry == null || arry.length == 0) {
             return "{}";
         }
@@ -101,6 +113,9 @@ public class ArrayUtils {
         StringBuilder result = new StringBuilder("{");
         boolean one = true;
         for (T data : arry) {
+            if (len == 0) {
+                break;
+            }
             if (!one) {
                 result.append(" , ");
             } else {
@@ -108,8 +123,11 @@ public class ArrayUtils {
             }
             String v = convert.apply(data);
             result.append(v);
+            len--;
         }
         result.append("}");
         return result.toString();
     }
+
+
 }

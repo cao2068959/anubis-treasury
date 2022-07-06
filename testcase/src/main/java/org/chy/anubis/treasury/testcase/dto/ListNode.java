@@ -69,6 +69,9 @@ public class ListNode implements Iterable<Integer> {
             }
             target = target.next;
         }
+        if (target != null){
+            return false;
+        }
         return true;
     }
 

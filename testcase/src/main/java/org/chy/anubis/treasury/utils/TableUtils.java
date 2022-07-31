@@ -59,6 +59,9 @@ public class TableUtils {
         return result.toString();
     }
 
+    public static String gen9Table(int minWith, BiFunction<Integer, Integer, String> dataFun) {
+        return gen9Table(minWith, dataFun, null);
+    }
 
     /**
      * 九宫格生成
@@ -67,7 +70,7 @@ public class TableUtils {
      * @param dataFun
      * @return
      */
-    public static String gen9Table(int minWith, BiFunction<Integer, Integer, String> dataFun) {
+    public static String gen9Table(int minWith, BiFunction<Integer, Integer, String> dataFun, TableItemHandle tableItemHandle) {
         String[][] data = new String[9][9];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -87,9 +90,14 @@ public class TableUtils {
         StringBuilder result = new StringBuilder(top);
         for (int i = 0; i < 9; i++) {
             String[] rowData = data[i];
+            int finalI = i;
             String dataLine = gen9Row("┃", count -> {
                 String cellData = rowData[count];
-                return " " + getText(cellData, with) + " ";
+                String text = " " + getText(cellData, with) + " ";
+                if (tableItemHandle != null) {
+                    text = tableItemHandle.run(count, finalI, text);
+                }
+                return text;
             }, "┊", "┃", "┃");
             result.append("\n").append(dataLine);
 
@@ -197,13 +205,14 @@ public class TableUtils {
         String sudoku = gen9Table(1, (y, x) -> {
             char datum = board[y][x];
             String result = datum + "";
-            if (validSudoku.contains(x + "-" + y)){
-                return font(result, 32);
-            }
             return result;
+        }, (x, y, value) -> {
+            if (validSudoku.contains(x + "-" + y)) {
+                return font(value, 31);
+            }
+            return value;
         });
-
-        Logger.info(sudoku);
+        System.out.println(sudoku);
 
         if (!validSudoku.isEmpty()) {
             Logger.error("生成的数独不正确", true);
@@ -262,5 +271,10 @@ public class TableUtils {
             this.y = y;
         }
     }
+
+    public interface TableItemHandle {
+        public String run(int x, int y, String value);
+    }
+
 
 }

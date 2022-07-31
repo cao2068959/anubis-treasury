@@ -7,6 +7,7 @@ import org.chy.anubis.treasury.testcase.dto.ListNode;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -94,7 +95,12 @@ public class AssertUtils {
      * @param autoSort
      */
     public static <T> void assertCollection(List<T> collection, String expectResult, boolean autoSort) {
-        Stream<String> stringStream = collection.stream().map(JsonUtils::toJson);
+        assertCollection(collection, expectResult, autoSort, JsonUtils::toJson);
+    }
+
+
+    public static <T> void assertCollection(List<T> collection, String expectResult, boolean autoSort, Function<T, String> convert) {
+        Stream<String> stringStream = collection.stream().map(convert);
         if (autoSort) {
             stringStream = stringStream.sorted();
         }

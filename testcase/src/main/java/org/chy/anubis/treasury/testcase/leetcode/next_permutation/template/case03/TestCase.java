@@ -1,8 +1,8 @@
-package org.chy.anubis.treasury.testcase.leetcode.submissions.template.case03;
+package org.chy.anubis.treasury.testcase.leetcode.next_permutation.template.case03;
 
 import org.chy.anubis.treasury.Exector;
 import org.chy.anubis.treasury.log.Logger;
-import org.chy.anubis.treasury.testcase.leetcode.submissions.Algorithm;
+import org.chy.anubis.treasury.testcase.leetcode.next_permutation.Algorithm;
 import org.chy.anubis.treasury.utils.ArrayUtils;
 import org.chy.anubis.treasury.utils.AssertUtils;
 

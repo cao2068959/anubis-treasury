@@ -69,6 +69,14 @@ public class AssertUtils {
         }
     }
 
+    public static void assertString(String current, String expect, Runnable errorCall) {
+        if (!current.equals(expect)) {
+            errorCall.run();
+
+        }
+    }
+
+
     public static void assertBoolean(Boolean current, Boolean expect) {
         if (!current.equals(expect)) {
             Logger.error(resultToString(String.valueOf(current), String.valueOf(expect)),
